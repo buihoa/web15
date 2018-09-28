@@ -1,0 +1,33 @@
+p {
+    background: #a1a1a1; /* shoudl write 6 letter code */
+
+}
+
+.text-red {
+    color:#a35151;
+
+}
+
+#top {
+    font-size: 25px;
+}
+
+.text-red:hover {
+    font-size: 25px;
+
+}
+
+/*[type] is used for attribute*/
+[type = text] {
+    border: 2x solid #a1a1a1
+}
+
+/*relationship description by a space. ul is outside li*/
+ul li {
+    font-size: italic;
+}
+
+/*Can also do by > but it has to be immediate
+*/
+
+ul > ol
