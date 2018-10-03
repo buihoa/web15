@@ -1,11 +1,8 @@
 .body {
-    display: flex;  
-    flex-direction: column;
-    flex-flow: row-wrap;
-}
-
-.body > * {
-    flex: 1 100%;
+    display: flex; 
+    flex-wrap: wrap; 
+    flex-flow: row wrap;
+    background-color: #808080;
 }
 
 .header {
@@ -39,13 +36,13 @@
 }
 
 .aside {
-    align-self: stretch;
     order: 4;
     float: right;
     background-color: #808080;
     font-weight: bold;
     text-align: center;
     width: 30%;
+    border-bottom: 140px solid #808080;
 }
 
 .footer {
