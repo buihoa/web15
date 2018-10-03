@@ -1,0 +1,57 @@
+.body {
+    display: flex;  
+    flex-direction: column;
+    flex-flow: row-wrap;
+}
+
+.body > * {
+    flex: 1 100%;
+}
+
+.header {
+    flex-grow: 1;
+    order: 1;
+    background-color: #0000ff;
+    font-weight: bold;
+    text-align: center;
+}
+
+.nav {
+    order: 2;
+    background-color: #800080;
+    text-decoration-color: #0000ff;
+    text-decoration: underline;
+    font-weight: bold;
+    width:100%;
+    display: inline-block;
+    text-align: center;
+}
+
+
+.main {
+    order: 3;
+    width: 70%;
+    background-color: #ffd700;
+    font-weight: bold;
+    background-size: 150px;
+    text-align: center;
+    float: left;
+}
+
+.aside {
+    align-self: stretch;
+    order: 4;
+    float: right;
+    background-color: #808080;
+    font-weight: bold;
+    text-align: center;
+    width: 30%;
+}
+
+.footer {
+    order: 5;
+    clear: both;
+    background-color: #00ffff;
+    font-weight: bold;
+    text-align: center;
+}
