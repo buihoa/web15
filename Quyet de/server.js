@@ -17,6 +17,11 @@ app.get('/answer', (req,res) => {
     res.sendFile(__dirname + '/public/answer.html')
 })
 
+app.get('/resultPage', (req,res) => {
+    res.sendFile(__dirname + '/public/result.html')
+})
+
+
 app.post('/createQuestions', (req, res) => {
     // req.body
     /* req.on('data', (data) => {
@@ -40,15 +45,36 @@ app.post('/createQuestions', (req, res) => {
     res.redirect('/answer');
 });
 
-    var file = JSON.parse(fs.readFileSync('./questions.json'));
-    var jsonLength = file.length;
-    var randomNum = Math.floor((Math.random() * jsonLength));
-    var content = file[randomNum].questionContent;
-    fs.writeFileSync('randomQues.txt', content, (err) => {
-            if (err) console.log(err)
-                else console.log("Write ranContent success")
-    });
+app.get('/randomQuestion', (req,res) => {
+    let questionList = JSON.parse(fs.readFileSync('./questions.json'));
+    if(questionList.length > 0){
+        let questionRandom = questionList[Math.floor(Math.random() * questionList.length)];
+        console.log(questionRandom);
+        res.send(questionRandom);
+    }
+    else res.send("");
+});
 
+let shareResult = [];
+
+app.post('/yesNo', (req, res) => {
+    const {questionid, answer} = req.body;
+    //const tempID = req.body.questionid;
+
+    let questionList = JSON.parse(fs.readFileSync('./questions.json'));
+    questionList[questionid][answer] += 1;
+
+    shareResult.push(questionList[questionid]);
+ 
+    fs.writeFileSync('./questions.json', JSON.stringify(questionList));
+    res.send({success: 1});
+});
+
+
+app.get('/result', (req, res) => {
+    console.log(shareResult[0]);
+    res.send(shareResult[0]);
+});
 
 app.use(express.static('public'));
 

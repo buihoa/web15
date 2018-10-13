@@ -17,10 +17,15 @@
         <h1>Hay hoi cong dong 1 cau hoi dung hoac sai</h1>
         <form action="/createQuestions" method="POST">
             <textarea id="questionContent" name="questionContent" cols="30" rows="10" maxlength="200"></textarea>
-            <span id="conLai" name="conLai">Con lai 200/200 ki tu</span>
+            <span name="conLai">Con lai <span id="conLai"></span>/200 ki tu</span>
             <button type="submit">Gui</button>
         </form>
     </div>
-    <script src="/main.js"></script>
+
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <script src="/ask.js"></script>
 </body>
 </html>
