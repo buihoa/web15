@@ -1,0 +1,36 @@
+.resultDisplay {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-content: space-between;
+    border: 5px solid gray;
+    padding: 10px 10px 10px 10px;
+}
+
+.resultDisplay video_info {
+    order:2;
+    position: relative;
+    left: 10px;
+    float: right;
+}
+
+
+.resultDisplay title {
+    order: 3;
+    position: relative;
+    float: right;
+}
+
+.resulstDisplay description {
+    order:4;
+    position: relative;
+    float: right;
+}
+.resultDisplay img {
+    order:1;
+    width: 300px;
+    height: 300px;
+    align-self: flex-start;
+    float: left;
+    
+}

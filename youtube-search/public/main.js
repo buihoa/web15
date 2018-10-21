@@ -6,16 +6,16 @@ $("#toClick").on("click", function() {
     $(".resultDisplay").empty();
     console.log($("#keyword").val());
     inputResult($("#keyword").val());
-    $("#keyword").val('');
 })
 
 function inputResult(input) {
+    let obj = {token: ""};
     $.ajax({
         url: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${input}&type=video&key=AIzaSyA9gQZ-oYomFypZN7PsupZJtOfQqA6Q3qw`,
         type: "GET",
         success: function (response) {  
             console.log(response);
-            var obj = {token: response.nextPageToken};
+            obj.token =  response.nextPageToken;
 
             for (var i = 0; i < 25; i++) {
                 var line1 = `<a class="resultDisplay" href="https://www.youtube.com/wathc?v=${response.items[i].id.videoId}"?autoplay="true" target="_blank">
@@ -29,17 +29,17 @@ function inputResult(input) {
                 $("#result-list").append(line1);
                 console.log("Inside the main loop");
             }   
-
-            $(window).scroll(function() {
-                if($(window).scrollTop() + $(window).height() == getDocHeight()) {
-                    alert("Next page!");
-                    console.log(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${input}&type=video&key=AIzaSyA9gQZ-oYomFypZN7PsupZJtOfQqA6Q3qw`)
-                    nextPage(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${input}&type=video&key=AIzaSyA9gQZ-oYomFypZN7PsupZJtOfQqA6Q3qw`, obj);
-                }
-            });
         },
         error: function (err) {
             console.log(err)
+        }
+    });
+
+    $(window).scroll(function() {
+        if($(window).scrollTop() + $(window).height() == getDocHeight()) {
+            alert("Next page!");
+            console.log(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${input}&type=video&key=AIzaSyA9gQZ-oYomFypZN7PsupZJtOfQqA6Q3qw`)
+            nextPage(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${input}&type=video&key=AIzaSyA9gQZ-oYomFypZN7PsupZJtOfQqA6Q3qw`, obj);
         }
     });
 }
