@@ -1,12 +1,33 @@
 /* $(document).ready(function() {
 
 }) */
-
+var input = '';
+var objA = {token: ""};
 $("#toClick").on("click", function() {
-    $(".resultDisplay").empty();
+    $(".resultDisplay").remove();
     console.log($("#keyword").val());
-    inputResult($("#keyword").val());
-})
+    input = $("#keyword").val();
+    inputResult(input);
+});
+
+$(window).scroll(function() {
+    if($(window).scrollTop() + $(window).height() == getDocHeight()) {
+        alert("Next page!");
+        console.log(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${input}&type=video&key=AIzaSyA9gQZ-oYomFypZN7PsupZJtOfQqA6Q3qw`)
+        if(objA.token!="") {
+            nextPage(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${input}&type=video&key=AIzaSyA9gQZ-oYomFypZN7PsupZJtOfQqA6Q3qw`, objA);
+        }
+    }
+});
+
+function getDocHeight() {
+    var D = document;
+    return Math.max(
+        D.body.scrollHeight, D.documentElement.scrollHeight,
+        D.body.offsetHeight, D.documentElement.offsetHeight,
+        D.body.clientHeight, D.documentElement.clientHeight
+    );
+}
 
 function inputResult(input) {
     let obj = {token: ""};
@@ -14,8 +35,7 @@ function inputResult(input) {
         url: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${input}&type=video&key=AIzaSyA9gQZ-oYomFypZN7PsupZJtOfQqA6Q3qw`,
         type: "GET",
         success: function (response) {  
-            console.log(response);
-            obj.token =  response.nextPageToken;
+            objA.token =  response.nextPageToken;
 
             for (var i = 0; i < 25; i++) {
                 var line1 = `<a class="resultDisplay" href="https://www.youtube.com/wathc?v=${response.items[i].id.videoId}"?autoplay="true" target="_blank">
@@ -27,35 +47,15 @@ function inputResult(input) {
                 </div>
                 </a>`;
                 $("#result-list").append(line1);
-                console.log("Inside the main loop");
-            }   
+            }  
         },
         error: function (err) {
             console.log(err)
         }
     });
-
-    $(window).scroll(function() {
-        if($(window).scrollTop() + $(window).height() == getDocHeight()) {
-            alert("Next page!");
-            console.log(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${input}&type=video&key=AIzaSyA9gQZ-oYomFypZN7PsupZJtOfQqA6Q3qw`)
-            nextPage(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${input}&type=video&key=AIzaSyA9gQZ-oYomFypZN7PsupZJtOfQqA6Q3qw`, obj);
-        }
-    });
-}
-
-
-function getDocHeight() {
-    var D = document;
-    return Math.max(
-        D.body.scrollHeight, D.documentElement.scrollHeight,
-        D.body.offsetHeight, D.documentElement.offsetHeight,
-        D.body.clientHeight, D.documentElement.clientHeight
-    );
 }
 
 function nextPage(input, obj) {
-    console.log(`${input}&pageToken=${obj.token}`);
     $.ajax({
         url: `${input}&pageToken=${obj.token}`,
         type: "GET",
@@ -74,9 +74,7 @@ function nextPage(input, obj) {
                 $("#result-list").append(line2);
                 console.log("Inside the nested loop");
             } 
-            if(response.nextPageToken) {
                 obj.token = response.nextPageToken;
-            }
         },
         error: function (err) {
             console.log(err)
