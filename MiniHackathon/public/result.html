@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Result</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="/result.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="text-center mt-5 col-md-8 col-lg-6 col-xl-4">ScoreKeeper</h1>
+    <form action="/newRound" method="POST">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col" id="name1">Ten 1</th>
+            <th scope="col" id="name2">Ten 2</th>
+            <th scope="col" id="name3">Ten 3</th>
+            <th scope="col" id="name4">Ten 4</th>
+          </tr>
+          <tr>
+            <th scope="col">Sum of Score</th>
+            <th scope="col" id="sum1">Ten 1</th>
+            <th scope="col" id="sum2">Ten 2</th>
+            <th scope="col" id="sum3">Ten 3</th>
+            <th scope="col" id="sum4">Ten 4</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <div id='toShowRound'>
+              <tr>
+                  <th scope="row"></th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+          </div>
+          <tr>
+            <th scope="row">Round <span id="roundNumber">1</span></th>
+            <td><input type="number" name="displayScore1" required></td>
+            <td><input type="number" name="displayScore2" required></td>
+            <td><input type="number" name="displayScore3" required></td>
+            <td><input type="number" name="displayScore4" required></td>
+          </tr>
+
+        </tbody>
+      </table>
+      <input id="idTeam" type="hidden" name="idTeam" value="0">
+      <input id="numRound" type="hidden" name="numRound" value="0">
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Add Round</button>
+      </div>
+    </form>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+    crossorigin="anonymous"></script>
+  <script src="/result.js"></script>
+</body>
+
+</html>
