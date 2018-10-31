@@ -1,0 +1,21 @@
+body {
+    background-color: #FBFEF9;
+    color: #333333;
+}
+
+
+.sum {
+    font-weight: bold;
+    color: white;
+}
+
+.nameCol {
+    font-weight:bold;
+    border: hidden;
+}
+
+@media only screen and (max-width: 780px) {
+    * {
+        width: 100%;
+    }
+}

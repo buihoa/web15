@@ -17,15 +17,15 @@
     <h1 class="text-center mt-5 col-md-8 col-lg-6 col-xl-4">ScoreKeeper</h1>
     <form action="/newRound" method="POST">
       <table class="table">
-        <thead class="thead-light">
-          <tr>
+        <thead >
+          <tr class="nameCol" style="background-color: #FBFEF9; border-color: #FBFEF9">
             <th scope="col"></th>
             <th scope="col" id="name1">Ten 1</th>
             <th scope="col" id="name2">Ten 2</th>
             <th scope="col" id="name3">Ten 3</th>
             <th scope="col" id="name4">Ten 4</th>
           </tr>
-          <tr>
+          <tr class="sum" style="background-color: #BF1363; border-color: #BF1363">
             <th scope="col">Sum of Score</th>
             <th scope="col" id="sum1">Ten 1</th>
             <th scope="col" id="sum2">Ten 2</th>
@@ -36,28 +36,21 @@
 
         <tbody>
           <div id='toShowRound'>
-              <tr>
-                  <th scope="row"></th>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
           </div>
-          <tr>
+          <tr style="border: hidden;">
             <th scope="row">Round <span id="roundNumber">1</span></th>
-            <td><input type="number" name="displayScore1" required></td>
-            <td><input type="number" name="displayScore2" required></td>
-            <td><input type="number" name="displayScore3" required></td>
-            <td><input type="number" name="displayScore4" required></td>
+            <td><input type="number" name="displayScore1" style="border: 1px solid grey" required></td>
+            <td><input type="number" name="displayScore2" style="border: 1px solid grey" required></td>
+            <td><input type="number" name="displayScore3" style="border: 1px solid grey" required></td>
+            <td><input type="number" name="displayScore4" style="border: 1px solid grey" required></td>
           </tr>
 
         </tbody>
       </table>
       <input id="idTeam" type="hidden" name="idTeam" value="0">
       <input id="numRound" type="hidden" name="numRound" value="0">
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Add Round</button>
+      <div class="text-center" class="form-group">
+        <button type="submit" class="btn btn-primary" style="background-color:#BF1363; border-color: #BF1363">Add Round</button>
       </div>
     </form>
   </div>

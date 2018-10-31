@@ -49,10 +49,10 @@ function printRound(response) {
         var item1 = `
         <tr>
         <th scope="row">Round ${i}</th>
-        <td>${response.players.player1.score[i]}</td>
-        <td>${response.players.player2.score[i]}</td>
-        <td>${response.players.player3.score[i]}</td>
-        <td>${response.players.player4.score[i]}</td>
+        <td style="background-color: grey; border: hidden;">${response.players.player1.score[i]}</td>
+        <td style="border: hidden;">${response.players.player2.score[i]}</td>
+        <td style="background-color: grey; border: hidden;">${response.players.player3.score[i]}</td>
+        <td style="border: hidden;>${response.players.player4.score[i]}</td>
       </tr>`
         $('#toShowRound').append(item1);
     }
